@@ -49,7 +49,7 @@ SetupWebPage::AddModule(
 				'blue' => '#3b91ad',
 				'green' => '',
 				'red' => '',
-				'yellow',
+				'brown',
 				'gray'
 			)
 		),
