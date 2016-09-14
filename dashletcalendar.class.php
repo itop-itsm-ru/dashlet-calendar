@@ -19,6 +19,7 @@ class DashletCalendar extends Dashlet
         $this->aProperties['default_view'] = 'month';
         $this->aProperties['agenda_day'] = false;
         $this->aProperties['agenda_week'] = false;
+        $this->aProperties['list_period'] = 'listWeek';
 
         $this->aProperties['enabled_1'] = true;
         $this->aProperties['query_1'] = 'SELECT WorkOrder';
@@ -78,7 +79,8 @@ class DashletCalendar extends Dashlet
         $aViews = array(
             'month' => 'month',
             'week' => $this->aProperties['agenda_week'] ? 'agendaWeek' : 'basicWeek',
-            'day' => $this->aProperties['agenda_day'] ? 'agendaDay' : 'basicDay'
+            'day' => $this->aProperties['agenda_day'] ? 'agendaDay' : 'basicDay',
+            'list' => $this->aProperties['list_period']
         );
         $sDefaultView = $aViews[$this->aProperties['default_view']];
         $sViews = implode(', ', $aViews);
@@ -92,7 +94,6 @@ class DashletCalendar extends Dashlet
         }
         $sTimeFormat = 'H:mm'; // MetaModel::GetConfig()->Get();
         //$sDateFomat = '';
-        // TODO: Язык
         $sLanguage = substr(strtolower(trim(UserRights::GetUserLanguage())), 0, 2);
 
         $oPage->add_ready_script(
@@ -182,10 +183,23 @@ EOF
             'month' => Dict::S('UI:DashletCalendar:Prop-Default-View:Month'),
             'week' => Dict::S('UI:DashletCalendar:Prop-Default-View:Week'),
             'day' => Dict::S('UI:DashletCalendar:Prop-Default-View:Day'),
+            'list' => Dict::S('UI:DashletCalendar:Prop-Default-View:List')
         );
         $oField = new DesignerComboField('default_view', Dict::S('UI:DashletCalendar:Prop-Default-View'), $this->aProperties['default_view']);
         $oField->SetMandatory();
         $oField->SetAllowedValues($aViews);
+        $oForm->AddField($oField);
+
+
+        $aListViews = array(
+            'listMonth' => Dict::S('UI:DashletCalendar:Prop-List-Period:Month'),
+            'listWeek' => Dict::S('UI:DashletCalendar:Prop-List-Period:Week'),
+            'listDay' => Dict::S('UI:DashletCalendar:Prop-List-Period:Day'),
+            'listYear' => Dict::S('UI:DashletCalendar:Prop-List-Period:Year')
+        );
+        $oField = new DesignerComboField('list_period', Dict::S('UI:DashletCalendar:Prop-List-Period'), $this->aProperties['list_period']);
+        $oField->SetMandatory();
+        $oField->SetAllowedValues($aListViews);
         $oForm->AddField($oField);
 
         // Agenda week view
@@ -295,11 +309,12 @@ class DashletCalendarStaticContent implements iPageUIExtension
     {
         $sModuleUrlBase = 'env-' . utils::GetCurrentEnvironment() . '/' . DashletCalendar::GetModuleName() . '/';
         $oPage->add_linked_stylesheet('../' . $sModuleUrlBase . 'fullcalendar/fullcalendar.min.css');
-        $oPage->add_linked_stylesheet('../' . $sModuleUrlBase . 'fullcalendar/custom.css');
-        // $oPage->add_linked_script('../'.$sModuleUrlBase.'fullcalendar/lib/jquery.min.js'); // We use jquery from iTop source
+        $oPage->add_linked_stylesheet('../' . $sModuleUrlBase . 'css/custom.css');
+//        $oPage->add_linked_script('../'.$sModuleUrlBase.'fullcalendar/lib/jquery.min.js'); // We use jquery from iTop source
         $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/lib/moment.min.js');
         $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/fullcalendar.min.js');
-        $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/lang/ru.js');
+        $sLang = substr(strtolower(trim(UserRights::GetUserLanguage())), 0, 2);
+        $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/locale/'.$sLang.'.js');
         return '';
     }
 
