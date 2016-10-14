@@ -51,7 +51,7 @@ You can change standard colors for events in the configuration file:
 ```
 'dashlet-calendar' => array (
         'colors' => array (
-          'blue' => '#3366CC',
+          'blue' => '#006699',
           'cyan' => '#009999',
           'green' => '#009933',
           'red' => '#CC0000',
