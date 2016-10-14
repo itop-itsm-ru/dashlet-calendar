@@ -28,7 +28,7 @@ class DashletCalendar extends Dashlet
         $this->aProperties['unfinished_1'] = true;
         $this->aProperties['title_attr_1'] = 'name';
         $this->aProperties['description_attr_1'] = '';
-        $this->aProperties['color_1'] = 'gray';
+        $this->aProperties['color_1'] = $this->GetDefaultColor();
 
         for ($i = 2; $i <= $this->iEventResourcesCount; $i++) {
             $this->aProperties['enabled_' . $i] = false;
@@ -38,7 +38,7 @@ class DashletCalendar extends Dashlet
             $this->aProperties['unfinished_' . $i] = false;
             $this->aProperties['title_attr_' . $i] = 'ref';
             $this->aProperties['description_attr_' . $i] = 'title';
-            $this->aProperties['color_' . $i] = 'gray';
+            $this->aProperties['color_' . $i] = $this->GetDefaultColor();
         }
     }
 
@@ -157,10 +157,15 @@ EOF
         return $aTitleAttrs;
     }
 
+    protected function GetDefaultColor() {
+        $aColors = $this->GetColorOptions();
+        return array_shift(array_keys($aColors));
+    }
+
     protected function GetColorOptions()
     {
         $aColorOpts = array();
-        $aColors = utils::GetConfig()->GetModuleSetting($this->sModuleName, 'colors', array('blue' => '#3b91ad'));
+        $aColors = utils::GetConfig()->GetModuleSetting($this->sModuleName, 'colors', array('grey' => 'grey'));
         foreach ($aColors as $name => $value) {
             if (is_integer($name)) {
                 $name = $value;
@@ -307,14 +312,18 @@ class DashletCalendarStaticContent implements iPageUIExtension
 {
     public function GetBannerHtml(iTopWebPage $oPage)
     {
+        // TODO: is it Dashboard page?
         $sModuleUrlBase = 'env-' . utils::GetCurrentEnvironment() . '/' . DashletCalendar::GetModuleName() . '/';
         $oPage->add_linked_stylesheet('../' . $sModuleUrlBase . 'fullcalendar/fullcalendar.min.css');
         $oPage->add_linked_stylesheet('../' . $sModuleUrlBase . 'css/custom.css');
-//        $oPage->add_linked_script('../'.$sModuleUrlBase.'fullcalendar/lib/jquery.min.js'); // We use jquery from iTop source
+        // $oPage->add_linked_script('../'.$sModuleUrlBase.'fullcalendar/lib/jquery.min.js'); // We use jquery from iTop source
         $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/lib/moment.min.js');
         $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/fullcalendar.min.js');
         $sLang = substr(strtolower(trim(UserRights::GetUserLanguage())), 0, 2);
-        $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/locale/'.$sLang.'.js');
+        // TODO: format of iTop user's language don't match to locale file name
+        if (file_exists('../' . $sModuleUrlBase . 'fullcalendar/locale/' . $sLang . '.js')) {
+            $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/locale/' . $sLang . '.js');
+        }
         return '';
     }
 

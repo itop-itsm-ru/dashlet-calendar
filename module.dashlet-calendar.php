@@ -6,7 +6,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'dashlet-calendar/1.0.0',
+	'dashlet-calendar/1.0.1',
 	array(
 		// Identification
 		//
@@ -45,13 +45,18 @@ SetupWebPage::AddModule(
 		//
 		'settings' => array(
 			// Module specific settings go here, if any
-			'colors' => array(
-				'blue' => '#3b91ad',
-				'green' => '',
-				'red' => '',
-				'brown',
-				'gray'
-			)
+            'colors' => array (
+                'blue' => '#006699',
+                'cyan' => '#009999',
+                'green' => '#009933',
+                'red' => '#CC0000',
+                'brown' => '#996633',
+                'gray' => '#666666',
+                'yellow' => '#CCCC00',
+                'orange' => '#FF9900',
+                'purple' => '#993366',
+                'pink' => '#CC6699'
+            )
 		),
 	)
 );

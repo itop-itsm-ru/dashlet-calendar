@@ -1,7 +1,17 @@
 .fc-event-container a.fc-event, .fc-event-container a:visited.fc-event, .fc-event-container a:hover.fc-event {
     color: #fff;
-    text-decoration: none;
     padding-left: 1px;
-    background: none;
-    background-color: #3a87ad;
+    text-decoration: none;
+    background: none #3a87ad;
+    opacity: 0.95;
+}
+
+.fc-event-container a:hover.fc-event {
+    opacity: 1;
+}
+
+.fc-list-item-title a, .fc-more-cell a.fc-more {
+    padding-left: 0 !important;
+    background: none !important;
+    color: #1c94c4;
 }
