@@ -1,5 +1,7 @@
 # Calendar for Combodo iTop
 
+**Описание на русском языке: http://community.itop-itsm.ru/t/kalendar-dlya-combodo-itop/485**
+
 This module adds the awesome [FullCalendar](https://fullcalendar.io) dashlet to use in iTop dashboards and allows you to display on it an any object that has a date field.
 
 ![dashlet-calendar.png](images/dashlet_calendar.png)
@@ -28,22 +30,22 @@ Here we have some general settings of the calendar and three separated sets of e
 
 General:
  - **Title** - header for the calendar
- - **Default view** - which view is used by default when the calendar is opened
+ - **Default view** (mandatory) - which view is used by default when the calendar is opened
 
 View specific settings:
- - **List period** - time interval for a list view
+ - **List period** (mandatory) - time interval for a list view
  - **Agenda week** – use agenda for a week view
  - **Agenda day** - use agenda for a day view
 
 Event set settings:
  - **Enabled** - turn on the event set
- - **Query** - OQL query to fetch objects to display
- - **Event start** - which date attribute of the queried object is used as the start of events
+ - **Query** (mandatory) - OQL query to fetch objects to display
+ - **Event start** (mandatory) - which date attribute of the queried object is used as the start of events
  - **Event end** - which date attribute of the queried object is used as the end of events
  - **Unfinished events** - display events for which end date is not filled yet; these events are shown as continuing to the present date (ex. unresolved Incidents)
- - **Event title** - which attribute is used as the title of events
+ - **Event title** (mandatory) - which attribute is used as the title of events
  - **Event description** - which attribute is used as the description of events (second line, below the title)
- - **Color** - color for events of this set
+ - **Color** (mandatory) - color for events of this set
 
 ### Configuration
 
