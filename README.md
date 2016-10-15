@@ -28,7 +28,7 @@ Here we have some general settings of the calendar and three separated sets of e
 
 General:
  - **Title** - header for the calendar
- - **Default view** - which view is used by default when opening the calendar
+ - **Default view** - which view is used by default when the calendar is opened
 
 View specific settings:
  - **List period** - time interval for a list view
