@@ -312,17 +312,20 @@ class DashletCalendarStaticContent implements iPageUIExtension
 {
     public function GetBannerHtml(iTopWebPage $oPage)
     {
-        // TODO: is it Dashboard page?
-        $sModuleUrlBase = 'env-' . utils::GetCurrentEnvironment() . '/' . DashletCalendar::GetModuleName() . '/';
-        $oPage->add_linked_stylesheet('../' . $sModuleUrlBase . 'fullcalendar/fullcalendar.min.css');
-        $oPage->add_linked_stylesheet('../' . $sModuleUrlBase . 'css/custom.css');
-        // $oPage->add_linked_script('../'.$sModuleUrlBase.'fullcalendar/lib/jquery.min.js'); // We use jquery from iTop source
-        $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/lib/moment.min.js');
-        $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/fullcalendar.min.js');
-        $sLang = substr(strtolower(trim(UserRights::GetUserLanguage())), 0, 2);
-        // TODO: format of iTop user's language don't match to locale file name
-        if (file_exists('../' . $sModuleUrlBase . 'fullcalendar/locale/' . $sLang . '.js')) {
-            $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/locale/' . $sLang . '.js');
+        // Workaround to use the module with Coverage Windows module that uses the same fullcalendar lib
+        if (utils::ReadParam('operation', null) === null) {
+            // Is it Dashboard page? We don't know. But it's definitely not Details, Create, Edit of Search page.
+            $sModuleUrlBase = 'env-' . utils::GetCurrentEnvironment() . '/' . DashletCalendar::GetModuleName() . '/';
+            $oPage->add_linked_stylesheet('../' . $sModuleUrlBase . 'fullcalendar/fullcalendar.min.css');
+            $oPage->add_linked_stylesheet('../' . $sModuleUrlBase . 'css/custom.css');
+            // $oPage->add_linked_script('../'.$sModuleUrlBase.'fullcalendar/lib/jquery.min.js'); // We use jquery from iTop source
+            $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/lib/moment.min.js');
+            $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/fullcalendar.min.js');
+            $sLang = substr(strtolower(trim(UserRights::GetUserLanguage())), 0, 2);
+            // TODO: format of iTop user's language don't match to locale file name
+            if (file_exists('../' . $sModuleUrlBase . 'fullcalendar/locale/' . $sLang . '.js')) {
+                $oPage->add_linked_script('../' . $sModuleUrlBase . 'fullcalendar/locale/' . $sLang . '.js');
+            }
         }
         return '';
     }
