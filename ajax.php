@@ -50,7 +50,7 @@ try {
     $aEvents = array();
     while ($oObj = $oObjectSet->Fetch()) {
         $aEvent = array();
-        $aEvent['title'] = strip_tags($oObj->GetAsHTML($sTitleAttr)) . ($sDescriptionAttr ? "\n" . strip_tags($oObj->GetAsHTML($sDescriptionAttr)) : '');
+        $aEvent['title'] = strip_tags(html_entity_decode($oObj->Get($sTitleAttr))) . ($sDescriptionAttr ? "\n" . strip_tags(html_entity_decode($oObj->Get($sDescriptionAttr))) : '');
         $aEvent['start'] = $oObj->Get($sStartDateAttr);
         $sEndDate = '';
         if ($sEndDateAttr) {
