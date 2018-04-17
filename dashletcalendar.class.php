@@ -68,7 +68,7 @@ class DashletCalendar extends Dashlet
                     'filter' => DBObjectSearch::FromOQL($this->aProperties['query_' . $i])->serialize(),
                     'start_attr' => $this->aProperties['start_attr_' . $i],
                     'end_attr' => $this->aProperties['end_attr_' . $i],
-                    'unfinished' => $this->aProperties['unfinished_' . $i],
+                    'unfinished' => $this->aProperties['unfinished_' . $i] ? 1 : 0,
                     'title_attr' => $this->aProperties['title_attr_' . $i],
                     'description_attr' => $this->aProperties['description_attr_' . $i],
                 )
@@ -158,8 +158,8 @@ EOF
     }
 
     protected function GetDefaultColor() {
-        $aColors = $this->GetColorOptions();
-        return array_shift(array_keys($aColors));
+        $aColors = array_keys($this->GetColorOptions());
+        return array_shift($aColors);
     }
 
     protected function GetColorOptions()

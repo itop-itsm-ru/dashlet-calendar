@@ -10,7 +10,7 @@ try {
     $sStartDateAttr = utils::ReadParam('start_attr', '');
     $sEndIntervalDate = utils::ReadParam('end', '');
     $sEndDateAttr = utils::ReadParam('end_attr', '');
-    $bShowUnfinished = utils::ReadParam('unfinished', '');
+    $bShowUnfinished = (bool)utils::ReadParam('unfinished', false);
     $sTitleAttr = utils::ReadParam('title_attr', '');
     $sDescriptionAttr = utils::ReadParam('description_attr', '');
     $sFilter = utils::ReadParam('filter', '');
