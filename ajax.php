@@ -13,7 +13,7 @@ try {
     $bShowUnfinished = (bool)utils::ReadParam('unfinished', false);
     $sTitleAttr = utils::ReadParam('title_attr', '');
     $sDescriptionAttr = utils::ReadParam('description_attr', '');
-    $sFilter = utils::ReadParam('filter', '');
+    $sFilter = utils::ReadParam('filter', '', false, 'string');
     $oFilter = DBObjectSearch::unserialize($sFilter);
     $sClass = $oFilter->GetClassAlias();
     if ($sEndDateAttr && !$bShowUnfinished)
@@ -50,7 +50,7 @@ try {
     $aEvents = array();
     while ($oObj = $oObjectSet->Fetch()) {
         $aEvent = array();
-        $aEvent['title'] = strip_tags(html_entity_decode($oObj->Get($sTitleAttr))) . ($sDescriptionAttr ? "\n" . strip_tags(html_entity_decode($oObj->Get($sDescriptionAttr))) : '');
+        $aEvent['title'] = strip_tags(html_entity_decode($oObj->GetAsHTML($sTitleAttr))) . ($sDescriptionAttr ? "\n" . strip_tags(html_entity_decode($oObj->GetAsHTML($sDescriptionAttr))) : '');
         $aEvent['start'] = $oObj->Get($sStartDateAttr);
         $sEndDate = '';
         if ($sEndDateAttr) {
