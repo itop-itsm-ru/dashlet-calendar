@@ -14,7 +14,7 @@ try {
     $sTitleAttr = utils::ReadParam('title_attr', '');
     $sDescriptionAttr = utils::ReadParam('description_attr', '');
     $sFilter = utils::ReadParam('filter', '', false, 'string');
-    $oFilter = DBObjectSearch::unserialize($sFilter);
+    $oFilter = DBObjectSearch::unserialize(base64_decode($sFilter));
     $sClass = $oFilter->GetClassAlias();
     if ($sEndDateAttr && !$bShowUnfinished)
     {

@@ -6,7 +6,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'dashlet-calendar/1.0.5',
+	'dashlet-calendar/1.1.0',
 	array(
 		// Identification
 		//
@@ -16,7 +16,6 @@ SetupWebPage::AddModule(
 		// Setup
 		//
 		'dependencies' => array(
-			'itop-tickets/2.2.0'
 		),
 		'mandatory' => false,
 		'visible' => true,
@@ -24,16 +23,12 @@ SetupWebPage::AddModule(
 		// Components
 		//
 		'datamodel' => array(
-			'dashletcalendar.class.php'
+			'dashletcalendar.class.php',
 		),
-		'webservice' => array(
-
+		'webservice' => array(),
+		'data.struct' => array(// add your 'structure' definition XML files here,
 		),
-		'data.struct' => array(
-			// add your 'structure' definition XML files here,
-		),
-		'data.sample' => array(
-			// add your sample data XML files here,
+		'data.sample' => array(// add your sample data XML files here,
 		),
 
 		// Documentation
@@ -45,18 +40,19 @@ SetupWebPage::AddModule(
 		//
 		'settings' => array(
 			// Module specific settings go here, if any
-            'colors' => array (
-                'blue' => '#006699',
-                'cyan' => '#009999',
-                'green' => '#009933',
-                'red' => '#CC0000',
-                'brown' => '#996633',
-                'gray' => '#666666',
-                'yellow' => '#CCCC00',
-                'orange' => '#FF9900',
-                'purple' => '#993366',
-                'pink' => '#CC6699'
-            )
+			'colors' => array(
+				'blue' => '#006699',
+				'cyan' => '#009999',
+				'green' => '#009933',
+				'red' => '#CC0000',
+				'brown' => '#996633',
+				'gray' => '#666666',
+				'yellow' => '#CCCC00',
+				'orange' => '#FF9900',
+				'purple' => '#993366',
+				'pink' => '#CC6699',
+			),
+			'time_format' => 'H:mm',
 		),
 	)
 );
