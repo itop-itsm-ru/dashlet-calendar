@@ -9,10 +9,10 @@
 Dict::Add('EN US', 'English', 'English', array(
     'UI:DashletCalendar:Label' => 'Calendar',
     'UI:DashletCalendar:Description' => 'Calendar',
-    'UI:WorkOrderCalendar:Title' => 'Workorder calendar',
-    'UI:WorkOrderCalendar:Title+' => 'Workorder calendar',
+    'UI:WorkOrderCalendar:Title' => 'Work Order calendar',
+    'UI:WorkOrderCalendar:Title+' => 'Work Order calendar',
     'UI:DashletCalendar:Prop-Title' => 'Title',
-    'UI:DashletCalendar:Prop-Default-View' => 'Defailt view',
+    'UI:DashletCalendar:Prop-Default-View' => 'Default view',
     'UI:DashletCalendar:Prop-Default-View:Month' => 'Month',
     'UI:DashletCalendar:Prop-Default-View:Week' => 'Week',
     'UI:DashletCalendar:Prop-Default-View:Day' => 'Day',
