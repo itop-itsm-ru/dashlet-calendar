@@ -387,6 +387,11 @@ class DashletCalendarStaticContent implements iPageUIExtension, iApplicationUIEx
 					self::AddToPage($oPage);
 				}
 			}
+			else
+			{
+				// For the Welcome dashboard on the start page without any context params (http://localhost/pages/UI.php)
+				self::AddToPage($oPage);
+			}
 		}
 
 		return '';
