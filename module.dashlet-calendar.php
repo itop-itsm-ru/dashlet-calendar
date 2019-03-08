@@ -6,7 +6,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'dashlet-calendar/1.1.0',
+	'dashlet-calendar/1.1.1',
 	array(
 		// Identification
 		//

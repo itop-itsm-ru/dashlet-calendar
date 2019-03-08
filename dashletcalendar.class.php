@@ -471,7 +471,7 @@ class DashletCalendarStaticContent implements iPageUIExtension, iApplicationUIEx
 			$oPage->add_linked_script($sModuleUrlBase.'/fullcalendar/fullcalendar.min.js');
 			$sLang = substr(strtolower(trim(UserRights::GetUserLanguage())), 0, 2);
 			// TODO: format of iTop user's language don't match to locale file name
-			if (file_exists($sModuleUrlBase.'/fullcalendar/locale/'.$sLang.'.js'))
+			if (file_exists(__DIR__.'/fullcalendar/locale/'.$sLang.'.js'))
 			{
 				$oPage->add_linked_script($sModuleUrlBase.'/fullcalendar/locale/'.$sLang.'.js');
 			}
