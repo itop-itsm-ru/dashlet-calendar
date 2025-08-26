@@ -1,5 +1,7 @@
 # Calendar for Combodo iTop
 
+**iTop 3 compatible version: https://github.com/knowitop/knowitop-dashlet-calendar**
+
 **Описание на русском языке: http://community.itop-itsm.ru/t/kalendar-dlya-combodo-itop/485**
 
 This module adds the awesome [FullCalendar](https://fullcalendar.io) dashlet to use in iTop dashboards and allows you to display on it an any object that has a date field.
